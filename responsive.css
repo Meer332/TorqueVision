@@ -1,0 +1,137 @@
+/* =========================================
+        TORQUEVISION MOBILE v1.0
+========================================= */
+
+@media screen and (max-width: 768px){
+
+html,body{
+
+    width:100%;
+    overflow-x:hidden;
+
+}
+
+#dashboard{
+
+    display:flex;
+    flex-direction:column;
+
+    width:100%;
+    gap:20px;
+
+    padding:12px;
+
+}
+
+/* ---------- LEFT PANEL ---------- */
+
+.left-panel{
+
+    width:100%;
+    order:1;
+
+}
+
+/* ---------- CENTER ---------- */
+
+.cluster{
+
+    width:100%;
+    order:2;
+
+}
+
+/* ---------- RIGHT PANEL ---------- */
+
+.right-panel{
+
+    width:100%;
+    order:3;
+
+}
+
+/* ---------- Warning Bar ---------- */
+
+.warningBar{
+
+    width:100%;
+    overflow:hidden;
+
+}
+
+/* ---------- Gauges ---------- */
+
+.gauges{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.gauge{
+
+    transform:scale(.62);
+
+    transform-origin:center;
+
+}
+
+/* ---------- Centre Display ---------- */
+
+.display{
+
+    transform:scale(.75);
+
+}
+
+/* ---------- Bottom Gauges ---------- */
+
+.smallRow{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+.smallGauge{
+
+    width:140px;
+
+}
+
+/* ---------- Engine ---------- */
+
+.engine{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+/* ---------- Gearbox ---------- */
+
+.gearbox{
+
+    width:100%;
+
+}
+
+/* ---------- Pedals ---------- */
+
+.pedals{
+
+    width:100%;
+
+}
+
+}

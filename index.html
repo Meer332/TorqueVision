@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TorqueVision Dashboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="gauges.css">
+<link rel="stylesheet" href="controls.css">
+<link rel="stylesheet" href="animations.css">
+<link rel="stylesheet" href="themes.css">
+<link rel="stylesheet" href="responsive.css">
+
+</head>
+
+<body>
+    <!-- ================= BOOT SCREEN ================= -->
+
+<div id="bootScreen">
+
+    <div class="bootLogo">
+
+        TORQUEVISION
+
+    </div>
+
+    <div class="bootSubtitle">
+
+        Performance Dashboard Simulator
+
+    </div>
+
+    <div class="bootStatus" id="bootStatus">
+
+Initializing ECU...
+
+</div>
+
+    <div class="bootBar">
+
+        <div id="bootProgress"></div>
+
+    </div>
+
+</div>
+
+<div id="dashboard">
+
+<!-- ================= LEFT PANEL ================= -->
+
+<aside class="left-panel">
+
+<h2 class="title">
+TorqueVision
+</h2>
+
+<div class="card">
+
+<h3>Select Car</h3>
+
+<select id="carSelect">
+
+<option>Ferrari SF90</option>
+<option>Lamborghini Huracan</option>
+<option>Porsche GT3 RS</option>
+<option>BMW M4 CSL</option>
+<option>Bugatti Chiron</option>
+
+</select>
+
+</div>
+
+
+<div class="card">
+
+<h3>Drive Mode</h3>
+
+<button class="mode active">Race</button>
+<button class="mode">Sport+</button>
+<button class="mode">Sport</button>
+<button class="mode">Comfort</button>
+<button class="mode">Eco</button>
+
+</div>
+
+<div class="card stats">
+
+<h3>Vehicle Stats</h3>
+
+<p>Power <span id="hp">1000 HP</span></p>
+<p>Torque <span id="torque">800 Nm</span></p>
+<p>Weight <span id="weight">1570 Kg</span></p>
+<p>Top Speed <span id="topSpeed">340 km/h</span></p>
+
+</div>
+<a href="about.html" class="aboutBtn">About TorqueVision</a>
+
+</aside>
+
+<!-- ================= CENTER ================= -->
+
+<main class="cluster">
+
+<div class="warningBar">
+
+    <div class="shiftLights">
+
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+<div class="led"></div>
+
+</div>
+
+<div id="leftIndicator">◀</div>
+
+<div>ABS</div>
+
+<div>TC</div>
+
+<div>⚠</div>
+
+<div>⛽</div>
+
+<div>🔋</div>
+
+<div>💡</div>
+
+<div id="rightIndicator">▶</div>
+
+</div>
+
+<div class="gauges">
+
+<!-- SPEED -->
+
+<div class="gauge">
+
+<svg id="speedSvg" class="dial" viewBox="0 0 500 500">
+
+<defs>
+
+<linearGradient id="needleGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+<stop offset="0%" stop-color="#770000"/>
+<stop offset="100%" stop-color="#ff3b3b"/>
+</linearGradient>
+
+<radialGradient id="glass">
+<stop offset="0%" stop-color="#ffffff22"/>
+<stop offset="70%" stop-color="#ffffff08"/>
+<stop offset="100%" stop-color="#00000000"/>
+</radialGradient>
+
+</defs>
+
+<circle cx="250" cy="250" r="218" class="outerChrome"/>
+
+<circle cx="250" cy="250" r="208" class="innerChrome"/>
+
+<circle cx="250" cy="250" r="196" class="dialFace"/>
+
+<circle cx="250" cy="250" r="182" class="innerShadow"/>
+
+<path id="speedArc"></path>
+
+<g id="speedTicks"></g>
+
+<g id="speedNumbers"></g>
+
+<circle cx="250" cy="250" r="175" class="glass"/>
+
+</svg>
+
+<div class="needle" id="speedNeedle"></div>
+
+<div class="centerCap"></div>
+
+<div class="digital">
+
+<div id="speedText">
+
+0
+
+</div>
+
+<span>km/h</span>
+
+</div>
+
+</div>
+
+<!-- CENTER DISPLAY -->
+
+<div class="display">
+
+<div class="gear">
+
+<span id="gear">
+
+N
+
+</span>
+
+</div>
+
+<div class="modeText">
+
+RACE
+
+</div>
+
+<div class="odo">
+
+ODO
+
+<span>
+
+000000
+
+</span>
+
+</div>
+
+</div>
+
+<!-- RPM -->
+
+<div class="gauge">
+
+<svg id="rpmSvg" class="dial" viewBox="0 0 500 500">
+
+<circle cx="250" cy="250" r="218" class="outerChrome"/>
+
+<circle cx="250" cy="250" r="208" class="innerChrome"/>
+
+<circle cx="250" cy="250" r="196" class="dialFace"/>
+
+<circle cx="250" cy="250" r="182" class="innerShadow"/>
+
+<path id="rpmArc"></path>
+
+<g id="rpmTicks"></g>
+
+<g id="rpmNumbers"></g>
+
+<circle cx="250" cy="250" r="175" class="glass"/>
+
+</svg>
+
+<div class="needle" id="rpmNeedle"></div>
+
+<div class="centerCap"></div>
+
+<div class="digital">
+
+<div id="rpmText">
+
+800
+
+</div>
+
+<span>RPM</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Bottom Gauges -->
+
+
+
+<div class="smallRow">
+
+
+
+    <div class="progress">
+
+        <div id="tempFill"></div>
+
+    </div>
+
+   
+
+</div>
+
+<div class="smallRow">
+
+<!-- Fuel -->
+
+<div class="miniGauge">
+
+<svg class="miniDial" viewBox="0 0 220 220">
+
+<circle cx="110" cy="110" r="95" class="outerChrome"/>
+
+<circle cx="110" cy="110" r="88" class="innerChrome"/>
+
+<circle cx="110" cy="110" r="80" class="dialFace"/>
+
+<path id="fuelArc" class="miniArc"></path>
+<line
+    id="fuelNeedle"
+    class="miniNeedle"
+    x1="110"
+    y1="110"
+    x2="110"
+    y2="48"/>
+
+<g id="fuelTicks"></g>
+
+</svg>
+
+<div class="miniValue" id="fuelValue">100%</div>
+
+<span>Fuel</span>
+
+</div>
+
+<!-- Temperature -->
+
+<div class="miniGauge">
+
+<svg class="miniDial" viewBox="0 0 220 220">
+
+<circle cx="110" cy="110" r="95" class="outerChrome"/>
+
+<circle cx="110" cy="110" r="88" class="innerChrome"/>
+
+<circle cx="110" cy="110" r="80" class="dialFace"/>
+
+<path id="tempArcMini" class="miniArc"></path>
+<line
+    id="tempNeedle"
+    class="miniNeedle"
+    x1="110"
+    y1="110"
+    x2="110"
+    y2="48"/>
+<g id="tempTicks"></g>
+
+</svg>
+
+<div class="miniValue" id="tempValue">20°C</div>
+
+<span>Temp</span>
+
+</div>
+
+<!-- Oil -->
+
+<div class="miniGauge">
+
+<svg class="miniDial" viewBox="0 0 220 220">
+
+<circle cx="110" cy="110" r="95" class="outerChrome"/>
+
+<circle cx="110" cy="110" r="88" class="innerChrome"/>
+
+<circle cx="110" cy="110" r="80" class="dialFace"/>
+
+<path id="oilArc" class="miniArc"></path>
+<line
+    id="oilNeedle"
+    class="miniNeedle"
+    x1="110"
+    y1="110"
+    x2="110"
+    y2="48"/>
+
+<g id="oilTicks"></g>
+
+</svg>
+
+<div class="miniValue" id="oilValue">5.0</div>
+
+<span>Oil</span>
+
+</div>
+
+<!-- Battery -->
+
+<div class="miniGauge">
+
+<svg class="miniDial" viewBox="0 0 220 220">
+
+<circle cx="110" cy="110" r="95" class="outerChrome"/>
+
+<circle cx="110" cy="110" r="88" class="innerChrome"/>
+
+<circle cx="110" cy="110" r="80" class="dialFace"/>
+
+<path id="voltArc" class="miniArc"></path>
+<line
+    id="voltNeedle"
+    class="miniNeedle"
+    x1="110"
+    y1="110"
+    x2="110"
+    y2="48"/>
+
+<g id="voltTicks"></g>
+
+</svg>
+
+<div class="miniValue" id="voltValue">14.2V</div>
+
+<span>Volt</span>
+
+</div>
+
+</div>
+</main>
+
+<!-- ================= RIGHT PANEL ================= -->
+
+<aside class="right-panel">
+
+<div class="engine">
+
+<button id="startStop">
+
+ENGINE
+
+<br>
+
+START
+
+</button>
+
+</div>
+
+<div class="gearbox">
+
+<h3>Transmission</h3>
+
+<div class="gearButtons">
+
+<button>P</button>
+
+<button>R</button>
+
+<button>N</button>
+
+<button>D</button>
+
+</div>
+
+</div>
+
+<div class="pedals">
+
+<h3>Pedals</h3>
+
+<label>Throttle</label>
+
+<div class="progress">
+
+<div id="throttleFill"></div>
+
+</div>
+
+<label>Brake</label>
+
+<div class="progress">
+
+<div id="brakeFill"></div>
+
+</div>
+
+<label>Clutch</label>
+
+<div class="progress">
+
+<div id="clutchFill"></div>
+
+</div>
+
+</div>
+
+</aside>
+
+</div>
+<footer class="revFooter">
+
+    <div class="footerLeft">
+
+        <h2>TorqueVision</h2>
+
+        <p>Immersive Automotive Dashboard Simulator</p>
+
+    </div>
+
+    <div class="footerCenter">
+
+        <p><strong>Version</strong> 1.0</p>
+        <p><strong>Engine</strong> JavaScript + SVG</p>
+        <p><strong>Status</strong> Stable Release</p>
+
+    </div>
+
+    <div class="footerRight">
+
+        <p>Designed & Developed by</p>
+
+        <h3>Meer Nigam</h3>
+
+        <p>© 2026 TorqueVision. All Rights Reserved.</p>
+
+    </div>
+
+</footer>
+
+<script src="boot.js"></script>
+<script src="cars.js"></script>
+<script src="sounds.js"></script>
+<script src="transmission.js"></script>
+<script src="controls.js"></script>
+<script src="engine.js"></script>
+<script src="gauges.js"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+</body>
+
+</html>

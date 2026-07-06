@@ -1,0 +1,471 @@
+/*==============================
+        GAUGES.CSS
+==============================*/
+
+.gauge{
+
+width: 400px;;
+height: 400px;;
+
+position:relative;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+}
+
+svg{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+overflow:visible;
+
+}
+
+/* OUTER RING */
+
+.ring{
+
+fill:#0b0b0b;
+
+stroke:#8a8a8a;
+
+stroke-width:10;
+
+filter:drop-shadow(0 0 12px rgba(255,255,255,.08));
+
+}
+
+/* INNER RING */
+
+.gauge::before{
+
+content:"";
+
+position:absolute;
+
+width:390px;
+height:390px;
+
+border-radius:50%;
+
+border:2px solid #3f3f3f;
+
+box-shadow:
+
+inset 0 0 40px rgba(255,255,255,.03),
+
+0 0 30px rgba(0,0,0,.8);
+
+}
+
+/* HUB */
+
+.centerCap{
+
+position:absolute;
+
+width:34px;
+height:34px;
+
+border-radius:50%;
+
+background:#111;
+
+border:5px solid #888;
+
+z-index:200;
+
+box-shadow:0 0 12px rgba(255,255,255,.15);
+
+}
+
+/* NEEDLES */
+
+.needle{
+
+position:absolute;
+
+width:7px;
+height: 155px;
+
+left:50%;
+top:50%;
+
+transform-origin:center bottom;
+
+transform:translate(-50%,-100%) rotate(-130deg);
+
+background:linear-gradient(
+
+to top,
+
+#7d0000,
+
+#ff4040
+
+);
+
+border-radius:20px;
+
+z-index:120;
+
+transition:.06s linear;
+
+box-shadow:
+
+0 0 15px rgba(255,0,0,.6);
+
+}
+
+.needle::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-10px;
+left:50%;
+
+transform:translateX(-50%);
+
+width:18px;
+height:18px;
+
+border-radius:50%;
+
+background:#ddd;
+
+}
+
+/* DIGITAL DISPLAY */
+
+.digital{
+
+position:absolute;
+
+bottom: 22px;
+
+text-align:center;
+
+z-index:300;
+
+}
+
+.digital div{
+
+font-size:46px;
+
+font-family:Orbitron,sans-serif;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+color:white;
+
+text-shadow:0 0 12px rgba(255,255,255,.2);
+
+}
+
+.digital span{
+
+font-size:16px;
+
+color:#8b8b8b;
+
+letter-spacing:2px;
+
+}
+
+/* SVG TICKS */
+
+#speedTicks line,
+#rpmTicks line{
+
+stroke:white;
+
+stroke-linecap:round;
+
+}
+
+/* BIG TICKS */
+
+.bigTick{
+
+stroke-width:4;
+
+}
+
+/* SMALL TICKS */
+
+.smallTick{
+
+stroke-width:2;
+
+opacity:.65;
+
+}
+
+/* NUMBERS */
+
+#speedNumbers text,
+#rpmNumbers text{
+
+fill:white;
+
+font-family:Orbitron;
+
+font-size:21px;
+
+font-weight:bold;
+
+text-anchor:middle;
+
+dominant-baseline:middle;
+
+}
+
+/* REDLINE */
+
+.redLine{
+
+stroke:#ff3030;
+
+stroke-width:5;
+
+}
+
+/* GLOW */
+
+.gauge{
+
+filter:
+
+drop-shadow(0 0 18px rgba(255,255,255,.03));
+
+}
+
+/* SPEED LABEL */
+
+.speedLabel{
+
+position:absolute;
+
+top:75px;
+
+font-size:22px;
+
+letter-spacing:3px;
+
+color:#777;
+
+}
+
+/* RPM LABEL */
+
+.rpmLabel{
+
+position:absolute;
+
+top:75px;
+
+font-size:22px;
+
+letter-spacing:3px;
+
+color:#777;
+
+}
+
+/* ACTIVE GLOW */
+
+.gauge.active{
+
+box-shadow:
+
+0 0 30px rgba(255,40,40,.35);
+
+}
+
+/* SVG ANIMATION */
+
+.dial{
+
+transition:.3s;
+
+}
+
+/* REFLECTION */
+
+.gauge::after{
+
+content:"";
+
+position:absolute;
+
+width:260px;
+height:120px;
+
+background:
+
+linear-gradient(
+
+to bottom,
+
+rgba(255,255,255,.08),
+
+transparent
+
+);
+
+border-radius:50%;
+
+top:35px;
+
+left:95px;
+
+transform:rotate(-18deg);
+
+pointer-events:none;
+
+opacity:.45;
+
+}
+/*==============================
+PREMIUM GAUGE UPGRADE
+==============================*/
+
+.outerChrome{
+fill:#444;
+stroke:#a5a5a5;
+stroke-width:5;
+}
+
+.innerChrome{
+fill:#1a1a1a;
+stroke:#666;
+stroke-width:3;
+}
+
+.dialFace{
+fill:#090909;
+stroke:#222;
+stroke-width:2;
+}
+
+.innerShadow{
+fill:none;
+stroke:#0f0f0f;
+stroke-width:10;
+}
+
+.glass{
+fill:url(#glass);
+}
+
+#speedArc,
+#rpmArc{
+fill:none;
+stroke:#ff3030;
+stroke-width:7;
+stroke-linecap:round;
+filter:drop-shadow(0 0 12px red);
+}
+
+/*=========================================
+            MINI GAUGES
+=========================================*/
+
+.bottomDashboard{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:60px;
+
+    margin-top:25px;
+
+}
+
+.miniGauge{
+
+    width:135px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+}
+
+.miniDial{
+
+    width:110px;
+
+    height:110px;
+
+}
+
+.miniArc{
+
+    fill:none;
+
+    stroke:var(--accent);
+
+    stroke-width:10;
+
+    stroke-linecap:round;
+
+}
+
+.miniValue{
+
+    margin-top:-15px;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    font-family:"Orbitron";
+
+    color:white;
+
+}
+
+.miniGauge span{
+
+    margin-top:2px;
+
+    font-size:15px;
+
+    color:#999;
+
+    letter-spacing:1px;
+
+} 
+
+.miniNeedle{
+
+    stroke:#ff3030;
+
+    stroke-width:5;
+
+    stroke-linecap:round;
+
+    transform-origin:110px 110px;
+
+    transition:transform .12s linear;
+
+}

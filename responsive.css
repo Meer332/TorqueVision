@@ -132,3 +132,97 @@ html,body{
 }
 
 }
+
+/* ======================================
+        LANDSCAPE MOBILE
+====================================== */
+
+@media screen and (max-width:950px) and (orientation:landscape){
+
+html,
+body{
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+}
+
+#dashboard{
+
+    display:grid;
+
+    grid-template-columns:220px 1fr 220px;
+
+    gap:15px;
+
+    padding:10px;
+
+}
+
+.left-panel{
+
+    width:220px;
+
+}
+
+.right-panel{
+
+    width:220px;
+
+}
+
+.cluster{
+
+    width:100%;
+
+}
+
+.gauges{
+
+    display:flex;
+
+    flex-direction:row;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+.gauge{
+
+    transform:scale(.72);
+
+}
+
+.display{
+
+    transform:scale(.85);
+
+}
+
+.smallRow{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:nowrap;
+
+}
+
+.smallGauge{
+
+    width:110px;
+
+}
+
+.warningBar{
+
+    width:100%;
+
+}
+
+}

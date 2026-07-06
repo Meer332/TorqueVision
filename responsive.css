@@ -23,32 +23,28 @@ html,body{
 
 }
 
+#dashboard{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+
 /* ---------- LEFT PANEL ---------- */
 
-.left-panel{
-
-    width:100%;
-    order:1;
-
-}
-
-/* ---------- CENTER ---------- */
-
-.cluster{
-
-    width:100%;
-    order:2;
-
-}
-
-/* ---------- RIGHT PANEL ---------- */
-
+.left-panel,
+.cluster,
 .right-panel{
 
     width:100%;
-    order:3;
+    max-width:100%;
+
+    flex:0 0 100%;
 
 }
+
+
 
 /* ---------- Warning Bar ---------- */
 
@@ -64,11 +60,12 @@ html,body{
 .gauges{
 
     display:flex;
+    flex-direction:column;
 
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
-    gap:10px;
+    gap:15px;
 
 }
 

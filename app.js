@@ -176,3 +176,17 @@ function appLoop(){
 }
 
 appLoop();
+
+function checkOrientation(){
+
+    if(window.innerHeight > window.innerWidth){
+
+        alert("For the best TorqueVision experience, rotate your device to landscape.");
+
+    }
+
+}
+
+window.addEventListener("load",checkOrientation);
+
+window.addEventListener("resize",checkOrientation);

@@ -25,3 +25,4 @@ TorqueVision is a realistic automotive dashboard simulator built using HTML, CSS
 ## Developer
 
 Designed & Developed by Meer Nigam
+Updated deployment.
